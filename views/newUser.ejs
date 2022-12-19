@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="ORLAU's working hour record application" />
+        <title>ORLAU WHR</title>
+        <link rel="stylesheet" href="/stylesheets/styles.css">
+        <base href= "http://localhost:3001"/>
+    </head>
+    <body>
+        <header class="header">
+            <table class="header_tools">
+                <td>
+                    <form action="/logout" method="GET">  
+                        <button type ="submit">Return to login</button>
+                    </form> 
+                </td>
+            </table>                                         
+        </header>
+        <div class ="new_user_wrapper">
+            <h3>Enter your details to create a new user</h3>
+            <form action="/addUser" method="POST">
+                <input type="text" name="firstname"  placeholder="Enter your first name here" value="<%= typeof firstname != 'undefined' ? firstname : '' %>" required>
+                <br><br>
+                <input type="text" name="lastname"  placeholder="Enter your last name here" value="<%= typeof lastname != 'undefined' ? lastname : '' %>" required>
+                <br><br>
+                <input type="email" name="email"  placeholder="Enter your email address here" value="<%= typeof email != 'undefined' ? email : '' %>" required>
+                <br><br>
+                What are your normal hours?
+                <table>
+                    <tr>
+                        <td>Mon<br><input type="number" name="monHours" value="<%= typeof monHours != 'undefined' ? monHours : '7.5' %>" step="0.25" required></td>
+                        <td>Tue<br><input type="number" name="tueHours" value="<%= typeof tueHours != 'undefined' ? tueHours : '7.5' %>" step="0.25" required></td>
+                        <td>Wed<br><input type="number" name="wedHours" value="<%= typeof wedHours != 'undefined' ? wedHours : '7.5' %>" step="0.25" required></td>
+                        <td>Thu<br><input type="number" name="thuHours" value="<%= typeof thuHours != 'undefined' ? thuHours : '7.5' %>" step="0.25" required></td>
+                        <td>Fri<br><input type="number" name="friHours" value="<%= typeof friHours != 'undefined' ? friHours : '7.5' %>" step="0.25" required></td>
+                    </tr>
+                </table>
+                <br>
+                <button class="create_user_button" type ="submit">Create user</button>
+            </form>
+            <%- include ('./partials/messages') %>
+        </div>
+        <br><br>
+        <footer>ORLAU toolkit version 0 : For general enquiries please contact timothy.arthur1@nhs.net</footer>
+    </body>
+</html>

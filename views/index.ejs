@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="ORLAU's working hour record application" />
+        <title>ORLAU WHR</title>
+        <link rel="stylesheet" href="/stylesheets/styles.css">
+        <base href= "http://localhost:3001"/>
+    </head>
+    
+    <body>
+        <div class="index_wrapper_parent">
+            <div class="index_wrapper">
+                <h1>ORLAU Toolkit</h1>
+                <form action="/login" method="POST">  
+                    <input type="text" name="empEmail"  placeholder="Enter you email address here" value="<%= typeof email != 'undefined' ? email : '' %>" required>
+                    <br><br>
+                    <button class="login_button" type ="submit">Log on</button>
+                </form>
+                <br><br>
+                <form action="/addUser" method="GET">  
+                    <button class="new_user_button" type ="submit">Create a new user</button>
+                </form>
+                <%- include ('./partials/messages') %>
+                <br><br>
+                <footer>ORLAU toolkit version 0 : For general enquiries please contact timothy.arthur1@nhs.net</footer>
+            </div>
+        </div>
+    </body>
+</html>

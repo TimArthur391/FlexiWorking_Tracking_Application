@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="ORLAU's working hour record application" />
+        <title>ORLAU WHR</title>
+        <link rel="stylesheet" href="/stylesheets/styles.css">
+        <base href= "http://localhost:3001"/>
+    </head>
+    <body>
+        <header class="header">
+            <table class="header_tools">
+                <td>
+                    <form action="/dashboard" method="GET">  
+                        <button type ="submit">Dashboard</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/logout" method="GET">  
+                        <button type ="submit">Logout</button>
+                    </form> 
+                </td>
+            </table>                                         
+        </header>
+        <div class ="settings_wrapper">
+            <%
+            if(isManager==1){
+            %>
+            <form action="/dashboard/settings/selectUser" method="POST">
+                <label>Employee:</label>
+                <select id="employee" name="employee" onchange="this.form.submit()" required>
+                    <% if(typeof employeeInfo!= 'undefined') { %>
+                    <%    employeeInfo.forEach(function(infoRow){ %>
+                    <%      if(email == infoRow.email) { %>
+                                <option value="<%= infoRow.email %>" selected><%= infoRow.name %></option>
+                    <%      } else { %>
+                                <option value="<%= infoRow.email %>"><%= infoRow.name %></option>
+                    <%      } %>
+                    <%    })        %>
+                    <% } %>
+                </select>
+            </form>
+            <% }; %> 
+            <form action="/dashboard/settings/saveSettings" method="POST">
+                <table class="settings_table">
+                    <tr>
+                        <th class="left" colspan="2">Personal Details</th>
+                    </tr>
+                    <tr>
+                        <td class="left"><label for="firstname">First Name:</label></td>
+                        <td class="right"><input type="text" name="firstname" value="<%= typeof firstname != 'undefined' ? firstname : '' %>" required></td>
+                    </tr>
+                    <tr>
+                        <td class="left"><label for="lastname">Last Name:</label></td>
+                        <td class="right"><input type="text" name="lastname" value="<%= typeof lastname != 'undefined' ? lastname : '' %>" required></td>
+                    </tr>
+                    <tr>
+                        <td class="left"><label for="email">Email:</label></td>
+                        <td class="right"><input type="email" name="email" value="<%= typeof email != 'undefined' ? email : '' %>" readonly><br></td>
+                    </tr>
+                    <tr>
+                        <td class="left">Normal working hours for:</label></td>
+                    </tr>
+                    <tr>
+                        <td class="left">&nbsp;&nbsp;&nbsp;&nbsp;<label for="monHours">Monday:</label></td>
+                        <td class="right"><input type="number" name="monHours" value="<%= typeof monHours != 'undefined' ? monHours : '7.5' %>" step="0.25"></td>
+                    </tr>
+                    <tr>
+                        <td class="left">&nbsp;&nbsp;&nbsp;&nbsp;<label for="tueHours">Tuesday:</label></td>
+                        <td class="right"><input type="number" name="tueHours" value="<%= typeof tueHours != 'undefined' ? tueHours : '7.5' %>" step="0.25"></td>
+                    </tr>
+                    <tr>
+                        <td class="left">&nbsp;&nbsp;&nbsp;&nbsp;<label for="wedHours">Wednesday:</label></td>
+                        <td class="right"><input type="number" name="wedHours" value="<%= typeof wedHours != 'undefined' ? wedHours : '7.5' %>" step="0.25"></td>
+                    </tr>
+                    <tr>
+                        <td class="left">&nbsp;&nbsp;&nbsp;&nbsp;<label for="thuHours">Thursday:</label></td>
+                        <td class="right"><input type="number" name="thuHours" value="<%= typeof thuHours != 'undefined' ? thuHours : '7.5' %>" step="0.25"></td>
+                    </tr>
+                    <tr>
+                        <td class="left">&nbsp;&nbsp;&nbsp;&nbsp;<label for="friHours">Friday:</label></td>
+                        <td class="right"><input type="number" name="friHours" value="<%= typeof friHours != 'undefined' ? friHours : '7.5' %>" step="0.25"></td>
+                    </tr>
+                    <%
+                    if(isManager==1){
+                    %>
+                    <tr>
+                        <td class="left">&nbsp;&nbsp;&nbsp;&nbsp;<label for="isSelectedManager">Manager:</label></td>
+                        <%
+                        if(isSelectedManager==1){
+                        %>
+                        <td class="right"><input type="checkbox" id="isSelectedManager" name="isSelectedManager" value="1" checked></td>
+                        <% } else { %> 
+                        <td class="right"><input type="checkbox" id="isSelectedManager" name="isSelectedManager" value="1"></td>
+                        <% }; %>
+                    </tr>
+                    <% }; %> 
+                    <!--
+                    <tr>
+                        <th>Interface Appearance</th>
+                    </tr>
+                    <tr>
+                        <th>User Details</th>
+                    </tr>
+                    <tr>
+                        <th>Application Audit Log</th>
+                    </tr>
+                    -->
+                    <tr>
+                        <td class="center" colspan="2">
+                            <button type ="reset">Reset</button>
+                            <button type ="submit">Apply</button>
+                        </td>
+                    </tr>
+                </table>                
+            </form>
+        </div>
+        <br><br>
+        <footer>ORLAU toolkit version 0 : For general enquiries please contact timothy.arthur1@nhs.net</footer>
+    </body>
+</html>

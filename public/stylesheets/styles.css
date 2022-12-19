@@ -1,0 +1,388 @@
+html, body {
+    background-color: #ECEFF1;
+    color: #000;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    height: 96%;
+}
+
+input {
+  font-family: Helvetica, sans-serif;
+}
+
+footer {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align:center;
+  font-size: 15px;
+  color: rgba(134, 132, 134, 0.767);
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  font-family: sans-serif, helvetica, Arial;
+  font-size: small;
+  font-weight: lighter;
+  width: 200px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #555 transparent;;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.index_wrapper_parent {
+  height: 100%;
+  display: grid;
+  width: 1000px;
+}
+
+.index_wrapper {
+  margin: auto;
+  width: 1000px;
+}
+
+.index_wrapper h1 {
+  font-size: 48px;
+}
+
+.index_wrapper input {
+  font-size: 15px;
+  padding: 4px 4px;
+  width: 25%;
+  border: 1px solid #263238;
+  border-radius: 4px;
+}
+
+.login_button {
+  font-size: 15px;
+  padding: 4px 4px;
+  width: 25%;
+  color: #fff;
+  background-color: #37474F;
+  border: 1px solid #37474F;
+  border-radius: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.login_button:hover {
+  background-color: #455A64;
+}
+
+.new_user_button {
+  font-size: 14px;
+  text-decoration: underline;
+  background-color: #ECEFF1;
+  border: 1px solid #ECEFF1;
+  cursor: pointer;
+}
+
+.header {
+  position: relative;
+  align-content: center;
+  top: -8px;
+  height: 30px;
+  display: grid;
+  background-color: #263238;
+  grid-template-columns: repeat(1, 1fr);
+  padding: 0px;
+  margin: 0px;
+}
+
+.header button{
+  font-size: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.589);
+  transition: color 0.3s ease-in-out;
+}
+
+.header button:hover{
+  color: #fff;
+}
+
+.header_tools{
+  margin-left: auto;
+  margin-right: 0;
+  column-width: 50px;
+  text-align: right;
+}
+
+.dashboard_flexbox_wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard_accrued_hours {
+  order: 1;
+  width: 450px;
+  margin: 10px;
+  border: 2px solid #455A64;
+  border-radius: 5px;
+}
+
+.dashboard_add_record {
+  order: 2;
+  width: 450px;
+  margin: 10px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border: 2px solid #455A64;
+  border-radius: 5px;
+}
+
+.dashboard_reporting{
+  border: 2px solid #455A64;
+  border-radius: 5px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.dashboard_add_record input[type=date]{
+  width: 130px;
+}
+.dashboard_add_record input[type=number]{
+  width: 50px;
+}
+.dashboard_add_record input[type=text]{
+  width: 170px;
+  transition: width 0.3s ease-in-out;
+}
+.dashboard_add_record input[type=text]:focus{
+  width: 400px;
+}
+
+.dashboard_reporting input[type=month]{
+  width: 160px;
+}
+
+.add_record_button{
+  font-size: 15px;
+  padding: 4px 4px;
+  width: 170px;
+  color: #fff;
+  background-color: #37474F;
+  border: 1px solid #37474F;
+  border-radius: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.add_record_button:hover {
+  background-color: #455A64;
+}
+
+.dashboard_content_wrapper input{
+  border: 1px solid #263238;
+  border-radius: 4px;
+  height: 20px;
+  font-size: 14px;
+}
+
+.reporting_email_date_selector{
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #455A64;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.reporting_chart_wrapper{
+  border: 2px solid #455A64;
+  border-radius: 5px;
+  padding-bottom: 10px;
+  padding-top: 15px;
+}
+
+.reporting_content_wrapper input{
+  border: 1px solid #263238;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.reporting_content_wrapper input[type=month]{
+  height: 20px;
+  width: 160px;
+}
+
+.reporting_content_wrapper input[list]{
+  width: 190px;
+}
+
+.reporting_content_wrapper select{
+  border: 1px solid #263238;
+  border-radius: 4px;
+  height: 22px;
+  font-size: 14px;
+  width: 160px;
+}
+
+.reporting_summary_table_wrapper{
+  width: 1000px;
+  border: 2px solid #455A64;
+  border-radius: 5px;
+  padding-bottom: 10px;
+  padding-top: 15px;
+}
+
+.reporting_summary_table_wrapper table{
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse; 
+}
+
+.reporting_summary_table_wrapper tr{
+  border-bottom: 1px solid #90A4AE;
+  line-height: 25px;
+}
+
+.report_button{
+  font-size: 15px;
+  padding: 4px 4px;
+  width: 25%;
+  color: #fff;
+  background-color: #37474F;
+  border: 1px solid #37474F;
+  border-radius: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.report_button:hover {
+  background-color: #455A64;
+}
+
+.new_user_wrapper {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 2px solid #455A64;
+  border-radius: 5px;
+  padding-bottom: 10px;
+}
+
+.new_user_wrapper input{
+  border: 1px solid #263238;
+  border-radius: 4px;
+  height: 20px;
+  font-size: 14px;
+}
+
+.new_user_wrapper input[type=text]{
+  width: 200px;
+}
+
+.new_user_wrapper input[type=email]{
+  width: 200px;
+}
+
+.new_user_wrapper input[type=number]{
+  width: 50px;
+}
+
+.new_user_wrapper table{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.create_user_button {
+  font-size: 15px;
+  padding: 4px 4px;
+  width: 190px;
+  color: #fff;
+  background-color: #37474F;
+  border: 1px solid #37474F;
+  border-radius: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.create_user_button:hover {
+  background-color: #455A64;
+}
+
+.settings_wrapper {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.settings_table {
+  font-size: 16px;
+  background-color: #ECEFF1;
+  border: 1px solid #ECEFF1;
+  padding-top: 15px;
+}
+
+.settings_table input[type=text]{
+  width: 200px;
+}
+
+.settings_table input[type=email]{
+  width: 200px;
+}
+
+.settings_table input[type=number]{
+  width: 50px;
+}
+
+.settings_table th{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.left {
+  text-align: left;
+  width: 230px;
+}
+
+.right {
+  text-align: right;
+  width: 230px;
+}
+
+.center {
+  text-align: center;
+}

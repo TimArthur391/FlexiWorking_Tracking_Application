@@ -1,0 +1,65 @@
+<% if(hoursThisMonth != null) { %>
+    <canvas id="employeeChart" width="400" height="100"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <% var dailyData = hoursThisMonth; %>
+    <% var dailyLabel = datesThisMonth; %>
+    <% var commentsTooltip = commentsArray; %>
+    <script>
+        let ctx = document.getElementById('employeeChart').getContext('2d');
+        
+        var getData = "<%= dailyData  %>";
+        var dataArr = getData.split(",");
+        var getLabel = "<%= dailyLabel  %>";
+        var LabelArr = getLabel.split(",");
+        var getComments = "<%= commentsTooltip %>";
+        var CommentsArr = getComments.split(",");
+
+        //console.log(CommentsArr);
+        //console.log(LabelArr);
+        const massPopChart = new Chart(ctx, {
+            type:'bar',
+            data:{
+                labels:LabelArr,
+                datasets:[{
+                    label: 'Hours worked',
+                    data: dataArr,
+                    backgroundColor: 'rgba(1, 32, 88, 0.7)',
+                }]
+            },
+            options:{
+                responsive : true,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        callbacks: {
+                            afterLabel : function(context) {
+                                if (CommentsArr[context.dataIndex] != 'No comment'){
+                                    let comments_formatted = CommentsArr[context.dataIndex];
+                                    comments_formatted = comments_formatted.replace('%;%', ',');
+                                    return 'Comment: ' + comments_formatted;
+                                }
+                            }
+                        }      
+                    } 
+                },                     
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Hours Worked'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }                                    
+                    }
+                } 
+            }
+        });
+    </script>
+<% } %>

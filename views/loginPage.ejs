@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="ORLAU's working hour record application" />
+        <title>ORLAU WHR</title>
+        <link rel="stylesheet" href="/stylesheets/styles.css">
+        <base href= "http://localhost:3001"/>
+    </head>
+    <body>
+        <header class="header">
+            <table class="header_tools">
+                <td>
+                    <%
+                    if(isManager==1){
+                    %>
+                    <form action="/dashboard/reportingPage" method="POST">  
+                        <button type ="submit">Reporting</button>
+                    </form>
+                    <% }; %> 
+                </td>
+                <td>
+                    <form action="/dashboard/settings" method="GET">  
+                        <button type ="submit">Settings</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/logout" method="GET">  
+                        <button type ="submit">Logout</button>
+                    </form> 
+                </td>
+            </table>                                         
+        </header>
+        <div class="dashboard_content_wrapper">
+            <div class="dashboard_flexbox_wrapper">
+                <div class="dashboard_accrued_hours">
+                    <h3>Accrued hours:</h3>
+                    <div class="tooltip">
+                        <h2><%=accruedHours %> hours</h2>
+                        <span class="tooltiptext">The amount of hours you are owed</span>
+                    </div>
+                </div>
+                <div class="dashboard_add_record">
+                    <form action="/dashboard/addWorkedHourRecord" method="POST">
+                        <label>Date:</label>
+                        <input type="date" name="date" required>
+                        <label>Change from normal:</label>
+                        <input type="number" name="change" value="0" step="0.25" max="2" min="-2">
+                        <br><br>
+                        <div class="tooltip">
+                            <input type="text" name="comments" placeholder="Enter your comments here" maxlength="50">
+                            <span class="tooltiptext">Eg. Clinic ran over, Project name, Doctors appointment</span>
+                        </div>
+                        <br><br>
+                        <div class="tooltip">
+                            <button class="add_record_button" type="submit">Add record</button>
+                            <span class="tooltiptext">Clicking submit will overwrite any existing records for this date</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="dashboard_reporting">
+                <%- include ('./partials/messages') %>
+                <%- include ('./partials/reportingViews') %>              
+                <form action="/dashboard/changeRecordMonth" method="POST">
+                    <label>Working hour record summary for:</label>
+                    <input type="month" name="month" value="<%= typeof month != 'undefined' ? month : '' %>" onchange="this.form.submit()">
+                </form>
+            </div>
+        </div>
+        <br><br>
+        <footer>ORLAU toolkit version 0 : For general enquiries please contact timothy.arthur1@nhs.net</footer>
+    </body>
+</html>
