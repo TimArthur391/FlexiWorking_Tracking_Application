@@ -9,7 +9,7 @@ let MySQLStore = require('express-mysql-session')(session);
 let connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '6395SQ134cz',
+  password: '********',
   database: 'orlau_whr'
 });
 let sessionStore = new MySQLStore({
